@@ -162,8 +162,8 @@ function main() {
     global $argv;
     ini_set("memory_limit", "512M");
 
-    if($argv[1] < 1 || $argv[1] > 1000000){
-        echo "Invalid selection, must be between 1 and 1000000";
+    if($argv[1] < 1 || $argv[1] > 1000000 || !is_numeric($argv[1])){
+        echo "Invalid selection, must be a number between 1 and 1000000";
     }else{
         $num_chain = new NumberChain();
 
