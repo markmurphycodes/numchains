@@ -1,5 +1,14 @@
 <?php
 
+/**
+* Number chain
+*
+* Simple class to deal with number chains.
+* A number chain is created by continuously adding the square of the digits in a number to form a new number until it has been seen before.
+* Because every number chain ends in either 1 or 89, and because there is a lot of repeated work, memoization is used.
+*
+* @author Mark Murphy
+*/
 class NumberChain {
 
     private $values;
@@ -65,6 +74,15 @@ class NumberChain {
         return false;
     }
 
+    /**
+    * Gets the next number in the chain
+    *
+    * Most of the time, a memoized value will be returned
+    *
+    * @param  	String	$n cast to string from int
+    * @return 	int
+    * @access 	public
+    */
     public function gen_next_number(String $n){
 
         $val = $this->get_value((int)$n);
@@ -88,6 +106,15 @@ class NumberChain {
     
     }
 
+    /**
+    * Gets a chain of numbers
+    *
+    * The sum of the squares of the individual digits determines the next number
+    *
+    * @param  	int	$n	the range of numbers to process, starting with 1
+    * @return 	Array
+    * @access 	public
+    */
     public function gen_num_chain($n){
 
         $chain = $this->get_chain($n);
@@ -129,6 +156,13 @@ class NumberChain {
         }
     }
 
+    /**
+    * Get a range of number chains, up to $n
+    *
+    * @param  	int	$n	the range of numbers to process, starting with 1
+    * @return 	null
+    * @access 	public
+    */
     public function get_range($n){
         $this->reset_nums();
 
@@ -142,6 +176,14 @@ class NumberChain {
         $this->print_status();
     }
 
+
+    /**
+    * Pretty printing output
+    *
+    * @param  	type	$varname	description
+    * @return 	type	description
+    * @access 	public
+    */
     public function print_status(){
 
         $stats = $this->get_nums();
